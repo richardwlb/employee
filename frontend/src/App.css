@@ -1,0 +1,46 @@
+
+header {
+  font-size: 20px;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  background: #527D96;
+  /* border-radius: 5px; */
+  padding: 10px;
+  /* margin: 5px; */
+
+}
+
+* {
+  font: sans-serif;
+}
+
+#div-img{
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+
+#div-img img{
+  height: 60px;
+  width: 60px;
+}
+
+
+
+.emp-list article {
+  color: #fff;
+  margin: 5px;
+  background: #4682b4;
+  border: 1px solid #4682b4;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#emp-info{
+  padding: 0;
+}
