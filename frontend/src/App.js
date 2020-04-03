@@ -5,7 +5,8 @@ import Header from './Components/Header';
 import Routes from './routes';
 
 
-function App() {
+// function App() {
+const App = () => {
   return (
     <div className="App">
       <Header />

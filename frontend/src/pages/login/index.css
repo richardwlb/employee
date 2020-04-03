@@ -12,9 +12,6 @@
     border: 3px solid #f1f1f1;
 }
 
-form{
-    
-}
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -33,9 +30,13 @@ input[type=text], input[type=password] {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    /* width: 100%; */
   }
   
   button:hover {
     opacity: 0.8;
   }
+
+  /* .Toastify__toast {
+    width: 500;
+  } */
