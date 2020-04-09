@@ -1,19 +1,46 @@
 
-header {
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgb(250, 250, 250);
+  font: 400 14px Roboto, sans-serif;
+}
+
+.header-container{
+  display: flex;
+}
+
+.header-class {
   font-size: 20px;
   display: flex;
-  color: #fff;
+  color: #527D96;
   justify-content: center;
   align-items: center;
-  background: #527D96;
+  background: rgb(250, 250, 250);
   /* border-radius: 5px; */
   padding: 10px;
   /* margin: 5px; */
-
+  width: 100%;
+  height: 50px;
 }
 
-* {
-  font: sans-serif;
+button {
+  background-color: #527D96;
+  color: white;
+  padding: 14px 20px;
+  margin: 10px 10px 1px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.header-functions {
+  display: flex;
+  justify-content: right;
+  float:ri ght;
 }
 
 #div-img{
@@ -30,14 +57,14 @@ header {
 
 
 .emp-list article {
-  color: #fff;
-  margin: 5px;
-  background: #4682b4;
-  border: 1px solid #4682b4;
+  /* color: #fff; */
+  margin: 10px;
+  background: rgb(232, 235, 236);
+  border: 1px solid rgb(232, 235, 236);
   display: flex;
   justify-content: left;
   align-items: left;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
 }
 

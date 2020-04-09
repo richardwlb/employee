@@ -7,6 +7,7 @@ import Main from './pages/main';
 import Login from './pages/login';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
+
     <Route 
         { ...rest }
         render={ props => 

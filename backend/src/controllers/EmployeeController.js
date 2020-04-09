@@ -5,23 +5,31 @@ module.exports = {
     async store(req, res){
         const { last_name, first_name, birth_date, id_area, id_nationality } = req.body; 
 
-        connection.query(`insert 
-                            into employee (
-                          last_name
-                        , first_name
-                        , birth_date
-                        , id_area
-                        , id_nationality) 
-                        values (
-                            '${last_name}'
-                            , '${first_name}'
-                            , '${birth_date}'
-                            , '${id_area}'
-                            , '${id_nationality}'
-                        )`,  await function (err, result, fields) {
-                            result = !(err) ? result : err;
-                            return res.send(result);
-                        });
+        console.log(req.body);
+
+            connection.query(`
+            insert 
+                into employee (
+                last_name
+            , first_name
+            , birth_date
+            , id_area
+            , id_nationality) 
+            values (
+                '${last_name}'
+                , '${first_name}'
+                , '${birth_date}'
+                , '${id_area}'
+                , '${id_nationality}'
+            )`,  await function (err, result, fields) {
+                
+                if(err){
+                    console.log(err.sqlMessage);
+                    return res.status(401).send({ error: err.sqlMessage });
+                }
+                return res.send(result);
+            });
+
     }, 
     
 
@@ -30,6 +38,7 @@ module.exports = {
 
         await connection.query('SELECT * FROM employee', (err, result, fields) => {
             result = !(err) ? result : err;
+            
             return res.send({ result, login});
         })
     },    

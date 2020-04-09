@@ -26,16 +26,13 @@ export default function Login(){
     async function handleLogin(e){
         e.preventDefault();
         
-            await api.post('/login', { login, password }).then((response) => {
-            // Success
-            const token = response.data.token;
-            doLogin(token);
-            history.push("/Main");
+        await api.post('/login', { login, password }).then((response) => {
+        // Success
+        const token = response.data.token;
+        doLogin(token);
+        history.push("/Main");
 
-        })
-        .catch((error) => {
-            // console.log(error.response.data.error);
-
+        }).catch((error) => {
             logout();
             toast.error(error.response.data.error);
         });   
