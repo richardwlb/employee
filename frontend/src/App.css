@@ -29,12 +29,13 @@ body {
 
 button {
   background-color: #527D96;
+  height: 40px;
   color: white;
-  padding: 14px 20px;
+  padding: 10px;
   margin: 10px 10px 1px 10px;
   border: none;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 4px; 
 }
 
 .header-functions {
@@ -70,4 +71,5 @@ button {
 
 #emp-info{
   padding: 0;
+  width: 600px;
 }

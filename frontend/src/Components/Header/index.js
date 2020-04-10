@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { FiPower, FiUserPlus } from 'react-icons/fi';
+import { FiPower } from 'react-icons/fi';
 import { logout } from '../../services/auth';
 
 import './index.css'
@@ -16,14 +16,11 @@ export default function Header(){
         if (window.confirm('Are you sure you wish to logoff?')) {
             logout();
             history.push('/');
-
         }     
-
     }
 
         return (
             <div className="header-container">
-                  
                 <div className="header-class">
                     <h3>Employees</h3>
                 </div>
@@ -32,9 +29,7 @@ export default function Header(){
                         onClick={handleLogout}>
                         <FiPower size={18} color="#ffffff" />
                     </button>
-
-                </div>
-                           
+                </div>                         
             </div>
         );
         

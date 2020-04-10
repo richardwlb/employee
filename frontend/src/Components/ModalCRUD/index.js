@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
 import api from '../../services/api';
 
@@ -14,7 +15,7 @@ toast.configure({
 
 export default function ModalCRUD(props){
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -22,30 +23,79 @@ export default function ModalCRUD(props){
     const [idArea, setIdArea] = useState('');
     const [IdNationality, setIdNationality] = useState('');
 
+    useEffect( () => {
+        loadEmployeer();
+
+    }, [props.idEmployeer] );
+
+    const loadEmployeer = async () => {
+
+        await api.get(`/employee/${props.idEmployeer}`)
+        .then( (response) => {
+            setFirstName(response.data[0].first_name);
+            setLastName(response.data[0].last_name);
+            setBirthDate(moment(response.data[0].birth_date).format('YYYY-MM-DD'));
+            setIdArea(response.data[0].id_area);
+            setIdNationality(response.data[0].id_nationality);
+
+        }).catch( (err) => {
+            setFirstName('');
+            setLastName('');
+            setBirthDate('');
+            setIdArea('');
+            setIdNationality('');
+        });
+
+    }
+
     const handleInsert = async (e) => {
     // async function handleInsert(e){
         e.preventDefault();
 
-        await api.post('/employee', {
-            last_name: firstName,
-            first_name: lastName,
-            birth_date: birthDate,
-            id_area: idArea,
-            id_nationality: IdNationality
-        } ).then( (response) => {
-            // console.log('==>>>', response.data.insertId);
-            toast.success('Success ', response.data.insertId);
-            window.location.reload(false);
-            props.toggle();
-            history.push('/Main');           
-        }).catch( (error) => {
-            console.log('Error: ', error.response.data.error);
+        if( props.idEmployeer === null){
+            await api.post('/employee', {
+                first_name: firstName,
+                last_name: lastName,
+                birth_date: birthDate,
+                id_area: idArea,
+                id_nationality: IdNationality
+            } ).then( (response) => {
+                // console.log('==>>>', response.data.insertId);
+                toast.success('Success ', response.data.insertId);
+                window.location.reload(false);
+                props.toggle();
+                // history.push('/Main');           
+            }).catch( (error) => {
+                console.log('Error: ', error.response.data.error);
+                toast.error('Error');           
+                // history.push('/Main'); 
+                props.toggle();
+            });
 
-            toast.error('Error');
-            
-            history.push('/Main'); 
-            props.toggle();
-        })
+        }else{
+            await api.put(`/employee/${props.idEmployeer}`, {
+                first_name: firstName,
+                last_name: lastName,
+                birth_date: birthDate,
+                id_area: idArea,
+                id_nationality: IdNationality
+            } ).then( (response) => {
+                // console.log('==>>>', response.data.insertId);
+                toast.success('Update success ', response.data.insertId);
+                window.location.reload(false);
+                props.toggle();
+                // history.push('/Main');           
+            }).catch( (error) => {
+                console.log('Error: ', error.response.data.error);
+                toast.error('Error');           
+                // history.push('/Main'); 
+                props.toggle();
+            });
+
+
+        }
+
+        
  
     }
 
