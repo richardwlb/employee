@@ -39,6 +39,8 @@ module.exports = {
         await connection.query('SELECT * FROM employee', (err, result, fields) => {
             result = !(err) ? result : err;
             
+            console.log(" = = = >",result)
+
             return res.send({ result, login});
         })
     },    
