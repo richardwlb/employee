@@ -38,9 +38,6 @@ module.exports = {
 
         await connection.query('SELECT * FROM employee', (err, result, fields) => {
             result = !(err) ? result : err;
-            
-            console.log(" = = = >",result)
-
             return res.send({ result, login});
         })
     },    
@@ -59,6 +56,8 @@ module.exports = {
         const id = req.params.id;
         const { last_name, first_name, birth_date, id_area, id_nationality } = req.body;
 
+        console.log(birth_date);
+
         connection.query(`update employee set
                           last_name         = '${last_name}'
                         , first_name        = '${first_name}'
@@ -68,6 +67,7 @@ module.exports = {
                         where id  = ${id}`
                         ,  await function (err, result, fields) {
                             result = !(err) ? result : err;
+                            console.log(result)
                             return res.send(result);
                         });
 

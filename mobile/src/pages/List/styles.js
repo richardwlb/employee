@@ -5,17 +5,17 @@ export default StyleSheet.create({
     container: {
       flex: 1,
     //   backgroundColor: '#fff',
-        marginTop: 40,
+        marginTop: 0,
         backgroundColor: 'rgb(232, 235, 236)',
     },
     header: {
         color: "#000000",
         marginBottom:10,
         fontSize:22,
-        backgroundColor: "#527D96",
+        backgroundColor: "#0072b1",
         padding: 10,
         alignContent: "flex-end",
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
     },
 
     employeer: {
@@ -24,7 +24,7 @@ export default StyleSheet.create({
         borderRadius: 5,
         color: "#666",
         padding: 20,
-        backgroundColor: "#527D96",
+        backgroundColor: "#0072b1",
     },
 
     textEmployeer: {

@@ -19,9 +19,14 @@ export default function List({ navigation }){
 
     async function loadEmployeers(){
 
-        const response = await api.get("/employee");
-        setEmployeers(response.data.result);
-        // setEmployeers([1,2,3]);
+        try{
+            const response = await api.get("/employee");
+            setEmployeers(response.data.result);
+        }catch( err ){
+            alert(err.response.data.error);
+            doLogout();
+        }
+
     }
 
     const navigateToDetail = (employee) => {
@@ -30,7 +35,7 @@ export default function List({ navigation }){
 
     useEffect(() => {
         loadEmployeers();
-    }, []);
+    }, [employeers]);
 
     return (
     <View style={styles.container}>

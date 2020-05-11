@@ -18,13 +18,11 @@ export default function App() {
       .catch(err => alert("An error occurred"));
     }, []);
 
-
-
-    console.log("signed: ",signed);
-
     if (isLoading) {
       return null;
     }
+
+    console.log("signed: ", signed);
 
     return <RootNavigatior signed={signed} />
 }

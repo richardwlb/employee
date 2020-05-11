@@ -21,10 +21,10 @@ export default StyleSheet.create({
     loginInput: {
         height: 40, 
         backgroundColor: "#ffffff",
-        borderColor: 'black', 
+        borderColor: '#0072b1', 
         borderWidth: 1,
-        marginTop: 10,
-        borderRadius:3,
+        marginTop: 15,
+        borderRadius:5,
         alignSelf: "stretch",
     },
     text: {

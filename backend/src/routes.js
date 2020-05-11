@@ -6,6 +6,7 @@ const routes  = express.Router();
 const EmployeeController = require('./controllers/EmployeeController');
 const LoginController = require('./controllers/LoginController');
 
+
 routes.post('/register', LoginController.register);
 routes.post('/login', LoginController.login);
 

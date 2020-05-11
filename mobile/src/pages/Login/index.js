@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "react-native-elements"
 import { View, Text, TextInput, Image } from "react-native";
-import { useNavigation, StackActions, NavigationActions } from "@react-navigation/native";
-import PropTypes from 'prop-types';
 
-import { doLogin, getToken } from "../../services/auth";
+import { doLogin } from "../../services/auth";
 
 import logoImg from "../../assets/logo.png";
 
@@ -16,8 +14,6 @@ export default function Login({ navigation }){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-
-    // const navigation = useNavigation();
 
     async function submitLogin(){
 

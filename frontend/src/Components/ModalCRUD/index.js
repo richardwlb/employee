@@ -60,15 +60,12 @@ export default function ModalCRUD(props){
                 id_area: idArea,
                 id_nationality: IdNationality
             } ).then( (response) => {
-                // console.log('==>>>', response.data.insertId);
                 toast.success('Success ', response.data.insertId);
                 window.location.reload(false);
-                props.toggle();
-                // history.push('/Main');           
+                props.toggle();          
             }).catch( (error) => {
                 console.log('Error: ', error.response.data.error);
                 toast.error('Error');           
-                // history.push('/Main'); 
                 props.toggle();
             });
 
