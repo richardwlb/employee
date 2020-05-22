@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import List from "./pages/List";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
+import New from "./pages/New";
 
 const SignedOutStack = createStackNavigator();
 const SignedOutStackScreen = () => (
@@ -27,6 +28,11 @@ const SignedInStackScreen = () => (
       name='Detail' 
       component={Detail} 
       options={{ title: 'Detail' }} />
+    <SignedInStack.Screen 
+      name='New' 
+      component={New} 
+      options={{ title: 'New Employee' }} />
+
   </SignedInStack.Navigator>
 )
 

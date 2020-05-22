@@ -46,7 +46,7 @@ export default function Login({ navigation }){
                 <TextInput 
                     placeholder="User Name" 
                     style={styles.loginInput} 
-                    value={email}
+                    value={email.toLowerCase()}
                     onChange={ (e) => setEmail(e.nativeEvent.text)}
                 />
                 <TextInput 

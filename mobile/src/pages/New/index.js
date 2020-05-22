@@ -32,69 +32,40 @@ export default function Detail(){
 
     // Get info from the previous page
     const route = useRoute();
-    const employee = route.params.employee;
-    // const test = route.params.onGoBack;
 
-    const idEmployee = employee.id;
-    const [firstName, setFirstName] = useState(employee.first_name);
-    const [lastName, setLastName] = useState(employee.last_name);
-    const [birthDay, setBirthDay] = useState(employee.birth_date);
-    const [idArea, setIdArea] = useState(employee.id_area);
-    const [idNationality, setIdNationality] = useState(employee.id_nationality);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [birthDay, setBirthDay] = useState( new Date() );
+    const [idArea, setIdArea] = useState('');
+    const [idNationality, setIdNationality] = useState('');
 
-    function confirmDelete(type) {
+    function confirmNew() {
         Alert.alert(
-            `${type} ${firstName} ?`,
-            `Are you sure you want to ${type.toLowerCase()} this employee?`,
+            `New employee`,
+            `Are you sure you want to create this employee?`,
             [
-                {
-                    text: "Confirm",
-                    onPress: () => { 
-                        if (type == "Delete"){
-                            deleteEmployee(); 
-                        }else{
-                            updateEmployee();
-                        } 
-                    },
-                },
-                {
-                    text: "Cancel",
-                    style: "cancel"
-                },
+                {text: "Confirm",onPress: () => { newEmployee() },},
+                { text: "Cancel", style: "cancel"},
                 { cancelable: false }
             ]
-            );
+        );
     }
 
-    async function deleteEmployee(){
+    async function newEmployee(){
         try{
-            await api.delete(`/employee/${idEmployee}`);
-            navigation.goBack();
-            
+            await api.post('/employee', {
+                first_name: firstName,
+                last_name: lastName,
+                birth_date: moment(birthDay).format('YYYY-MM-DD'),
+                id_area: idArea,
+                id_nationality: idNationality
+            } )
+            navigation.navigate('List');
         }catch(err){
             console.log(err);
             alert(err);
         }
     }
-
-    async function updateEmployee(){
-
-        try{
-            await api.put(`/employee/${idEmployee}`, { 
-                "last_name" : lastName, 
-                "first_name" : firstName, 
-                "birth_date" : moment(birthDay).format('YYYY-MM-DD'), 
-                "id_area" : idArea, 
-                "id_nationality" : idNationality
-            });
-            navigation.goBack();
-        }catch(err){
-            console.log(err);
-            alert(err);
-        }
-    }
-
-
 
     return(
         <View style={styles.container} >
@@ -148,14 +119,8 @@ export default function Detail(){
 
                 <Button 
                     style={styles.button} 
-                    title="Update" 
-                    onPress={ () => confirmDelete("Update") }
-                />
-
-                <Button 
-                    style={styles.button} 
-                    title="Deletar" 
-                    onPress={ () => confirmDelete("Delete") }
+                    title="Create" 
+                    onPress={ () => confirmNew() }
                 />
 
             </View> 

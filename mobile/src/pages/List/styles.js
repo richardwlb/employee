@@ -15,7 +15,10 @@ export default StyleSheet.create({
         backgroundColor: "#0072b1",
         padding: 10,
         alignContent: "flex-end",
-        justifyContent: "flex-end",
+        // justifyContent: "flex-start",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        // alignContent: "center",
     },
 
     employeer: {
@@ -38,5 +41,16 @@ export default StyleSheet.create({
         color: "#fff",
         fontSize: 15,
         fontWeight: "bold"
-      }
+    },
+      textInput: {
+        height: 33, 
+        padding: 3,
+        width: 200,
+        backgroundColor: "#ffffff",
+        borderColor: 'white', 
+        borderWidth: 1,
+        margin: 10,
+        borderRadius:5,
+        alignSelf: "stretch",
+    },
   });

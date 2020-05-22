@@ -34,12 +34,42 @@ module.exports = {
     
 
     async list(req, res) {
-        const login = req.login;
 
-        await connection.query('SELECT * FROM employee', (err, result, fields) => {
-            result = !(err) ? result : err;
-            return res.send({ result, login});
-        })
+        const login = req.login;
+        const { page = 1, search } = req.query;
+
+        console.log('search: ', search)
+
+        if(search){
+
+            sql = `SELECT count(*) FROM employee where (first_name like '%${search}%' or last_name like '%${search}%' );
+            SELECT * FROM employee where (first_name like '%${search}%' or last_name like '%${search}%' ) limit 5 offset ${ ((page - 1) * 5)} `;
+
+        }
+        
+        if( page == 'all'){
+            sql = `SELECT count(*) FROM employee;SELECT * FROM employee `;
+        }else{
+            sql = `SELECT count(*) FROM employee;SELECT * FROM employee limit 5 offset ${ ((page - 1) * 5)}`;
+        }
+
+        
+    
+        await connection.query( sql, [2, 1], (err, results, fields) => {
+            if(err){
+                console.log(err);
+                return;
+            }
+
+            const [count] = results[0];
+
+            res.header('X-Total-Count', count['count(*)']);
+            result = results[1];
+
+            console.log(result);
+
+            return res.send({ result, login, page});
+        });
     },    
 
     async show(req, res) {

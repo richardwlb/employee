@@ -8,7 +8,8 @@ var pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '1Password',
-    database: 'company'
+    database: 'company',
+    multipleStatements: true
 })
 pool.getConnection((err, connection) => {
     if (err) {

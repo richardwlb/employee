@@ -15,7 +15,7 @@ export const doLogin = token => {
     // localStorage.setItem(TOKEN_KEY, token)
     AsyncStorage.setItem(TOKEN_KEY, token);
 };
-export const logout = () => {
+export const logout = async () => {
     // localStorage.removeItem(TOKEN_KEY)
-    AsyncStorage.removeItem(TOKEN_KEY);
+    await AsyncStorage.removeItem(TOKEN_KEY);
 };
