@@ -18,6 +18,6 @@ Project to practice some functions like:
 
 ![Front-End-login](images/mobile-login.jpg)
 
-![Front-End-login](images/mobile-login.jpg)
+![Front-End-login](images/mobile-list.jpg)
 
-![Front-End-login](images/mobile-login.jpg)
+![Front-End-login](images/mobile-detail.jpg)
