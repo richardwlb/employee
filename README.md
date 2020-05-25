@@ -1,10 +1,12 @@
 # employee
 Employee Registration
 
+This is a project developed with NodeJS and MySQL in the backend, ReactJS in the frontend and React Native in Mobile side.
+
 Project to practice some functions like:
 
 - Mysql DB
-- JWT Autentication
+- JWT authentication
 - Password cripto with Bcrypt
 - Mobile Login with token
 - Routes
