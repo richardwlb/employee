@@ -1,11 +1,25 @@
 # employee
-Employee Registration
+
+<p>
+  <img src="https://img.shields.io/badge/made%20by-RICHARD%20BREHMER-04D361?style=flat-square">
+  <a href="https://opensource.org/licenses/MIT">
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-04D361?style=flat-square">
+  </a>
+</p>
+
+About Employee Registration
 
 This is a project developed with NodeJS and MySQL in the backend, ReactJS in the frontend and React Native in Mobile side.
 
-Project to practice some functions like:
+## Technologies
 
-- Mysql DB
+- Node
+- React
+- React native
+- Mysql
+
+## Project to practice some functions like:
+
 - JWT authentication
 - Password cripto with Bcrypt
 - Mobile Login with token
